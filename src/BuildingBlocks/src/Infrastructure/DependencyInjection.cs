@@ -15,8 +15,8 @@ public static class DependencyInjection
 {
     public static void AddInfrastructureServices(this IHostApplicationBuilder builder)
     {
-        var connectionString = builder.Configuration.GetConnectionString("BuildingBlocksDb");
-        Guard.Against.Null(connectionString, message: "Connection string 'BuildingBlocksDb' not found.");
+        var connectionString = builder.Configuration.GetConnectionString("GymAppDb");
+        Guard.Against.Null(connectionString, message: "Connection string 'GymAppDb' not found.");
 
         builder.Services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         builder.Services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();

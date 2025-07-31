@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <RootNamespace>BuildingBlocks.Web</RootNamespace>
-    <AssemblyName>BuildingBlocks.Web</AssemblyName>
+    <RootNamespace>GymApp</RootNamespace>
+    <AssemblyName>GymApp</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\src\Application\Application.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\src\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
