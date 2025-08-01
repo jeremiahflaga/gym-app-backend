@@ -13,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp", "GymApp\GymApp.csproj", "{D0CB8988-941E-F03F-33F6-422419036819}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\BuildingBlocks\src\Application\Application.csproj", "{91F6B0F0-EDF9-AEAF-FD72-C7C7F45C04F2}"
@@ -23,16 +21,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\BuildingBlocks
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\BuildingBlocks\src\Infrastructure\Infrastructure.csproj", "{20F3E58E-A1F2-D906-AEBA-EB4211CABE10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp.Api.Host", "GymApp.Api.Host\GymApp.Api.Host.csproj", "{01967F73-67F4-29FF-4986-BCDA340A6610}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D0CB8988-941E-F03F-33F6-422419036819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0CB8988-941E-F03F-33F6-422419036819}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0CB8988-941E-F03F-33F6-422419036819}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0CB8988-941E-F03F-33F6-422419036819}.Release|Any CPU.Build.0 = Release|Any CPU
 		{91F6B0F0-EDF9-AEAF-FD72-C7C7F45C04F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91F6B0F0-EDF9-AEAF-FD72-C7C7F45C04F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91F6B0F0-EDF9-AEAF-FD72-C7C7F45C04F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{20F3E58E-A1F2-D906-AEBA-EB4211CABE10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20F3E58E-A1F2-D906-AEBA-EB4211CABE10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20F3E58E-A1F2-D906-AEBA-EB4211CABE10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01967F73-67F4-29FF-4986-BCDA340A6610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01967F73-67F4-29FF-4986-BCDA340A6610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01967F73-67F4-29FF-4986-BCDA340A6610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01967F73-67F4-29FF-4986-BCDA340A6610}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
