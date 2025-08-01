@@ -1,0 +1,97 @@
+= Use CleanArchitecture template as building blocks
+
+Date: 2025-08-01
+
+== Problem
+
+When starting an ASP.NET project I want to use a template, because starting from scratch would be very time consuming. I have chosen to use CleanArchitecture template by Jason Taylor.
+
+My problem was that this template's file structure (inspired by the N-Layers approach) is different from file structure being suggested in the "Evolutionary Architecture by Example" project (inspired by the Vertical Slice approach)
+
+Here is the file structure being used in the CleanArchitecture template by Jason Taylor:
+
+    PROJECT_ROOT/
+    └── src/
+        ├── Application/
+        │   ├── Contracts/ <-- Use Cases
+        │   │   ├── Commands/
+        │   │   │   ├── PrepareContract/
+        │   │   │   │   ├── PrepareContractCommand.cs
+        │   │   │   │   └── PrepareContractCommandHandler.cs
+        │   │   │   └── SignContract/
+        │   │   ├── Queries/
+        │   ├── Offers/ <-- Use Cases
+        │   │   ├── Commands/
+        │   │   └── Queries/
+        ├── Domain/
+        │   ├── Common/
+        │   │   ├── BaseEntity.cs
+        │   │   ├── BaseEvent.cs
+        │   │   └── ValueObject.cs
+        │   ├── Entities/
+        │   │   ├── Contract.cs
+        │   │   └── Offer.cs
+        │   ├── ValueObjects/
+        ├── Infrastructure/
+        │   ├── Data/
+        │   │   └── Migrations/
+        └── Web/ <-- Host
+            ├── Endpoints/
+            │   └── ContractEndpoints.cs
+            ├── appsettings.json
+            ├── CustomExceptionHandler.cs
+            ├── EndpointGroupBase.cs
+            ├── Program.cs
+            └── WebApplicationExtensions.cs
+
+Here is the file structure being used Evolutionary Architecture by Example:
+
+    PROJECT_ROOT/
+    └── src/
+        ├── Contracts/          <-- Module / Bounded Context
+        │   ├── Api/
+        │   │   └── ContractEndpoints.cs
+        │   ├── Data/
+        │   │   └── Migrations/
+        │   ├── PrepareContract/
+        │   │   ├── PrepareContractCommand.cs
+        │   │   └── PrepareContractCommandHandler.cs
+        │   ├── SignContract/
+        │   ├── Contract.cs <-- Entity
+        ├── Offers/             <-- Module / Bounded Context
+        │   ├── Api/
+        │   ├── Data/
+        │   │   └── Migrations/
+        │   ├── Offer.cs <-- Entity
+        ├── BuildingBlocks/     <-- or Common
+        │   ├── Api/
+        │   │   ├── CustomExceptionHandler.cs
+        │   │   ├── EndpointGroupBase.cs
+        │   │   └── WebApplicationExtensions.cs
+        │   ├── Application/
+        │   ├── Domain/
+        │   │   ├── BaseEntity.cs
+        │   │   ├── BaseEvent.cs
+        │   │   └── ValueObject.cs
+        │   ├── Infrastructure/
+        └── Api.Host/
+            ├── appsettings.json
+            └── Program.cs
+
+
+== Decision
+
+Generate a new project using the CleanArchitecture template, then move the three projects --- `Application`, `Domain`, and `Infrastructure` --- to a new folder named `BuildingBlocks`. Later, I will add a new project named `Api` to contain HTTP API endpoint related stuffs common to the projects that will reference these building blocks
+
+When creating a new microservice project, or when adding a new module to the modular monolith (or modulith) project, I will reference the relevant BuildingBlock project/s.
+
+(TODO: needs revising so as not to be confusing to read)
+
+
+== Consequences
+
+(add later)
+
+== Considered alternatives
+
+None
