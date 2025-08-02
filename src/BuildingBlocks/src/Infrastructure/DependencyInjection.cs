@@ -53,9 +53,8 @@ public static class DependencyInjection
 
             options.AddPolicy(Policies.CanPrepareOffer, policy => policy.RequireRole(Roles.SalesSpecialist));
             options.AddPolicy(Policies.CanReviewOffer, policy => policy.RequireRole(Roles.SalesCoordinator));
-            options.AddPolicy(Policies.CanRejectOffer, policy => policy.RequireRole(Roles.SalesCoordinator));
+            options.AddPolicy(Policies.CanRejectOrApproveOffer, policy => policy.RequireRole(Roles.SalesCoordinator));
             options.AddPolicy(Policies.CanCorrectOffer, policy => policy.RequireRole(Roles.SalesSpecialist));
-            options.AddPolicy(Policies.CanApproveOffer, policy => policy.RequireRole(Roles.SalesCoordinator));
             options.AddPolicy(Policies.CanPublishOffer, policy => policy.RequireRole(Roles.SalesSpecialist));
         });
     }
