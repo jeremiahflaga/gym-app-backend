@@ -68,21 +68,48 @@ public class ApplicationDbContextInitialiser
     {
         // Default roles
         var administratorRole = new IdentityRole(Roles.Administrator);
-
         if (_roleManager.Roles.All(r => r.Name != administratorRole.Name))
         {
             await _roleManager.CreateAsync(administratorRole);
         }
+        var salesSpecialistRole = new IdentityRole(Roles.SalesSpecialist);
+        if (_roleManager.Roles.All(r => r.Name != salesSpecialistRole.Name))
+        {
+            await _roleManager.CreateAsync(salesSpecialistRole);
+        }
+        var salesCoordinatorRole = new IdentityRole(Roles.SalesCoordinator);
+        if (_roleManager.Roles.All(r => r.Name != salesCoordinatorRole.Name))
+        {
+            await _roleManager.CreateAsync(salesCoordinatorRole);
+        }
+        var customerRole = new IdentityRole(Roles.Customer);
+        if (_roleManager.Roles.All(r => r.Name != customerRole.Name))
+        {
+            await _roleManager.CreateAsync(customerRole);
+        }
 
         // Default users
-        var administrator = new ApplicationUser { UserName = "administrator@localhost", Email = "administrator@localhost" };
-
+        var administrator = new ApplicationUser { UserName = "administrator", Email = "administrator@example.com" };
         if (_userManager.Users.All(u => u.UserName != administrator.UserName))
         {
             await _userManager.CreateAsync(administrator, "Administrator1!");
-            if (!string.IsNullOrWhiteSpace(administratorRole.Name))
+            if (!string.IsNullOrWhiteSpace(administratorRole.Name)
+                && !string.IsNullOrWhiteSpace(salesSpecialistRole.Name)
+                && !string.IsNullOrWhiteSpace(salesCoordinatorRole.Name))
             {
-                await _userManager.AddToRolesAsync(administrator, new [] { administratorRole.Name });
+                await _userManager.AddToRolesAsync(administrator, new [] 
+                { 
+                    administratorRole.Name, salesSpecialistRole.Name, salesCoordinatorRole.Name
+                });
+            }
+        }
+        var exampleCustomer = new ApplicationUser { UserName = "customer", Email = "customer@example.com" };
+        if (_userManager.Users.All(u => u.UserName != administrator.UserName))
+        {
+            await _userManager.CreateAsync(exampleCustomer, "Customer1!");
+            if (!string.IsNullOrWhiteSpace(customerRole.Name))
+            {
+                await _userManager.AddToRolesAsync(exampleCustomer, new[] { customerRole.Name });
             }
         }
 
