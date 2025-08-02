@@ -48,6 +48,15 @@ public static class DependencyInjection
         builder.Services.AddTransient<IIdentityService, IdentityService>();
 
         builder.Services.AddAuthorization(options =>
-            options.AddPolicy(Policies.CanPurge, policy => policy.RequireRole(Roles.Administrator)));
+        {
+            options.AddPolicy(Policies.CanPurge, policy => policy.RequireRole(Roles.Administrator));
+
+            options.AddPolicy(Policies.CanPrepareOffer, policy => policy.RequireRole(Roles.SalesSpecialist));
+            options.AddPolicy(Policies.CanReviewOffer, policy => policy.RequireRole(Roles.SalesCoordinator));
+            options.AddPolicy(Policies.CanRejectOffer, policy => policy.RequireRole(Roles.SalesCoordinator));
+            options.AddPolicy(Policies.CanCorrectOffer, policy => policy.RequireRole(Roles.SalesSpecialist));
+            options.AddPolicy(Policies.CanApproveOffer, policy => policy.RequireRole(Roles.SalesCoordinator));
+            options.AddPolicy(Policies.CanPublishOffer, policy => policy.RequireRole(Roles.SalesSpecialist));
+        });
     }
 }
